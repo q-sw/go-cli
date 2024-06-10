@@ -1,13 +1,16 @@
 package utils
 
 import (
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing/object"
 	"log"
 	"time"
+
+	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing/object"
+	"github.com/spf13/viper"
 )
 
-func InitRepo(path string, files []string) {
+func GitInit(path string) {
+
 	git.PlainInit(path, false)
 
 	r, err := git.PlainOpen(path)
@@ -22,8 +25,8 @@ func InitRepo(path string, files []string) {
 	w.AddGlob("*")
 	w.Commit("Init repository", &git.CommitOptions{
 		Author: &object.Signature{
-			Name:  "q-sw",
-			Email: "quentin.swiech@gmail.com",
+			Name:  viper.GetString("git_username"),
+			Email: viper.GetString("git_email"),
 			When:  time.Now(),
 		},
 	})
