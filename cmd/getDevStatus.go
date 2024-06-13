@@ -16,12 +16,15 @@ var getDevStatusCmd = &cobra.Command{
 This command use the cli config file ${HOME}/.cli-config.yaml
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		devenvstatus.GetDevStatus()
+		devenvstatus.GetDevStatus(statusVerbose)
 	},
 }
 
+var statusVerbose bool
+
 func init() {
 	getCmd.AddCommand(getDevStatusCmd)
+	getDevStatusCmd.Flags().BoolVarP(&statusVerbose, "verbose", "v", false, "[Global] Show details about repository status")
 
 	// Here you will define your flags and configuration settings.
 
