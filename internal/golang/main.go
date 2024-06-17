@@ -2,16 +2,22 @@ package golang
 
 import (
 	"os"
+	"os/exec"
 	"path/filepath"
 
 	"github.com/q-sw/go-cli-qsw/internal/utils"
+	"github.com/spf13/viper"
 )
 
-var goPackageFolder = []string{"cmd", "internal", "pkg", "bin", "test"}
+var goPackageFolder = []string{"cmd", "internal", "bin", "test"}
 var goAPIFolder = []string{"api", "storage", "types", "utils", "test", "bin"}
 var goStdFiles = []string{"README.md", "LICENSE", "makefile", "main.go"}
 
-func Creator(actionType string) {
+func Creator(actionType, name string) {
+	if name != "" {
+		os.Mkdir(name, 0755)
+		os.Chdir(name)
+	}
 	currentDir, _ := os.Getwd()
 	switch {
 	case actionType == "package":
@@ -29,9 +35,18 @@ func Creator(actionType string) {
 			os.MkdirAll(filepath.Join(currentDir, d), 0755)
 		}
 	}
-
+	initGoProject(name)
 }
 
-// TODO: add project with prefix like github.com/q-sw/{{project_name}}
-// TODO: use config file to configure the project prefix
+func initGoProject(name string) {
+	if name == "" {
+		name = utils.GetCurrentDirName()
+	}
+	p := viper.GetString("github_profile")
+	prefix := p + "/" + name
+
+	cmd := exec.Command("go", "mod", "init", prefix)
+	cmd.Run()
+}
+
 // TODO: add template for README.md makefile, main.go
