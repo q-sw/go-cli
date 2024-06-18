@@ -5,6 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
+	"github.com/q-sw/go-cli-qsw/internal/templates"
 	"github.com/q-sw/go-cli-qsw/internal/utils"
 	"github.com/spf13/viper"
 )
@@ -13,7 +14,7 @@ var goPackageFolder = []string{"cmd", "internal", "bin", "test"}
 var goAPIFolder = []string{"api", "storage", "types", "utils", "test", "bin"}
 var goStdFiles = []string{"README.md", "LICENSE", "makefile", "main.go"}
 
-func Creator(actionType, name string) {
+func Creator(actionType, name, description string) {
 	if name != "" {
 		os.Mkdir(name, 0755)
 		os.Chdir(name)
@@ -35,6 +36,9 @@ func Creator(actionType, name string) {
 			os.MkdirAll(filepath.Join(currentDir, d), 0755)
 		}
 	}
+	templates.RenderReadme(name, description)
+	templates.RenderMakefile(name)
+	templates.RenderMain(name)
 	initGoProject(name)
 }
 
@@ -48,5 +52,3 @@ func initGoProject(name string) {
 	cmd := exec.Command("go", "mod", "init", prefix)
 	cmd.Run()
 }
-
-// TODO: add template for README.md makefile, main.go
