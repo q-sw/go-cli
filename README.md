@@ -32,3 +32,19 @@ mv qsw-cli/* .
 ```shell
 make install
 ```
+
+## Config File template
+```yaml
+---
+mainPath: "/home/xxxx"
+toCheck:
+  - path: "dotfiles"
+    is_repo: true
+  - path: "dev/tmp"
+    is_repo: false
+  - path: "dev/github/public"
+    is_repo: false
+git_username: q-sw
+git_email: xxxxx.xxxxxh@yyyy.yy
+github_profile: github.com/q-sw
+```
