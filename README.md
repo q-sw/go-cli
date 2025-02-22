@@ -1,5 +1,42 @@
-# go-qsw-cli
+# go-cli
 This is my own CLI write in GO with Cobra
+
+## CLI
+
+```plaintext
+CLI is a some of tools to improve your daily work as
+DevOps engineer.
+CLI is organized into a serie of verbs and actions
+
+Usage:
+  cli [command]
+
+Available Commands:
+    completion -> Generate the autocompletion script for the specified shell
+    create -> Create project, files...
+        go-project -> Create skaffold for Go project
+            cli create go-project [flags]
+                -d, --description string   [Global] Go project description
+                -g, --enable-git           [Global] Activate Git
+                -h, --help                 help for go-project
+                -n, --name string          [Global] Go project name without github profile url
+                -t, --type string          [Global] Go project type standard|api|cli (default "package")
+        terraform -> Create skaffold for terraform
+            cli create terrafrom [project|module|files] [flags]
+                -g, --enable-git    [Project] Activate Git (git init) on your folder/project
+                -h, --help          help for terraform
+                -n, --name string   [Global] Name for your terraform module or project
+                -p, --path string   [Global] Path where create your instance (default "./")
+                -t, --type string   [Project] Project type, accept standard;env (default "standard")
+    get -> Get information from your system or projet
+        dev-status -> show the status of your dev environments
+            -h, --help                help for dev-status
+                --show-all-branches   [Global] Show local and remote branches
+            -b, --show-branch         [Global] Show actual branch
+            -c, --show-change         [Global] Show files changed
+            -v, --verbose             [Global] Show details about repository status
+    help -> Help about any command
+```
 
 ## Init the project
 
