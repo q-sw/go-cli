@@ -7,5 +7,5 @@ package main
 import "github.com/q-sw/go-cli-qsw/cmd"
 
 func main() {
-	cmd.Execute()
+    cmd.Execute()
 }
