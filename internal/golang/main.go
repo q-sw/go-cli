@@ -5,8 +5,8 @@ import (
     "os/exec"
     "path/filepath"
 
-    "github.com/q-sw/go-cli-qsw/internal/templates"
-    "github.com/q-sw/go-cli-qsw/internal/utils"
+    "github.com/q-sw/go-cli/internal/templates"
+    "github.com/q-sw/go-cli/internal/utils"
     "github.com/spf13/viper"
 )
 

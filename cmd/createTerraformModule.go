@@ -4,7 +4,7 @@ Copyright © 2024 q-sw
 package cmd
 
 import (
-    "github.com/q-sw/go-cli-qsw/internal/terraform"
+    "github.com/q-sw/go-cli/internal/terraform"
     "github.com/spf13/cobra"
 )
 

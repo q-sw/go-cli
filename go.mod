@@ -1,4 +1,4 @@
-module github.com/q-sw/go-cli-qsw
+module github.com/q-sw/go-cli
 
 go 1.22.3
 

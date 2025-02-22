@@ -8,7 +8,7 @@ import (
 
     "path/filepath"
 
-    "github.com/q-sw/go-cli-qsw/internal/utils"
+    "github.com/q-sw/go-cli/internal/utils"
 )
 
 var PROJECTTYPE = []string{"standard", "env"}

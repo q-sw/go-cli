@@ -4,7 +4,7 @@ Copyright © 2024 q-sw
 package cmd
 
 import (
-    "github.com/q-sw/go-cli-qsw/internal/devEnvStatus"
+    "github.com/q-sw/go-cli/internal/devEnvStatus"
     "github.com/spf13/cobra"
 )
 
