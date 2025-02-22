@@ -16,17 +16,22 @@ var getDevStatusCmd = &cobra.Command{
 This command use the cli config file ${HOME}/.cli-config.yaml
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		devenvstatus.GetDevStatus(statusVerbose)
+        if statusVerbose{
+            devenvstatus.GetDevStatus(true, true, true)
+        }
+		devenvstatus.GetDevStatus(statusVerbose, showBranch, showAllBranches)
 	},
 }
 
 var statusVerbose bool
+var showChange bool
 var showAllBranches bool
 var showBranch bool
 
 func init() {
 	getCmd.AddCommand(getDevStatusCmd)
 	getDevStatusCmd.Flags().BoolVarP(&statusVerbose, "verbose", "v", false, "[Global] Show details about repository status")
+	getDevStatusCmd.Flags().BoolVarP(&showChange, "show-change", "c", false, "[Global] Show files changed")
 	getDevStatusCmd.Flags().BoolVarP(&showBranch, "show-branch", "b", false, "[Global] Show actual branch")
 	getDevStatusCmd.Flags().BoolVarP(&showAllBranches, "show-all-branches", "", false, "[Global] Show local and remote branches")
 
