@@ -14,10 +14,10 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
     Use:   "cli",
-    Short: "CLI with some tools to improve my daily work",
-    Long: `CLI is a some of tools to improve your daily work as
-    DevOps engineer.
-    CLI is organize into a series of verbs and actions`,
+    Short: "CLI is a collection of tools to improve the daily workflow",
+    Long: `CLI is a collection of tools designed to improve the daily workflow of a DevOps engineer.
+The CLI is structured using verbs and actions.`,
+
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

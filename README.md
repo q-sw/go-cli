@@ -4,9 +4,8 @@ This is my own CLI write in GO with Cobra
 ## CLI
 
 ```plaintext
-CLI is a some of tools to improve your daily work as
-DevOps engineer.
-CLI is organized into a serie of verbs and actions
+CLI is a collection of tools designed to improve the daily workflow of a DevOps engineer.
+The CLI is structured using verbs and actions.
 
 Usage:
   cli [command]
