@@ -6,6 +6,9 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/spf13/viper"
 	"os"
+    "os"
+    "strings"
+    "github.com/go-git/go-git/v5/plumbing"
 )
 
 func GetDevStatus(verbose bool) {
@@ -86,4 +89,45 @@ func getRepoStatus(repoPath string, verbose bool) {
 		}
 		fmt.Println()
 	}
+func listLocalBranch(repoPath string, showBranch, showAllBranches bool) {
+
+    repo, err := git.PlainOpen(repoPath)
+
+    if err != nil {
+        fmt.Printf("%v is not a git repository \n\n", repoPath)
+        return
+    }
+    head, err := repo.Head()
+    if err != nil {
+        fmt.Println("error to get HEAD")
+    }
+    if showBranch{
+        color.Green(fmt.Sprintf("Attach on branch: %v\n", head.Name().String()))
+    }
+
+    refs, err := repo.References()
+    if err != nil {
+        fmt.Println("error to get ref")
+    }
+
+    var remote []string
+    var local []string
+
+    refs.ForEach(func(r *plumbing.Reference) error {
+        if r.Name().IsRemote() {
+            b := strings.Split(string(r.Name().Short()), "/")
+            if b[1] != "HEAD" {
+                remote = append(remote, b[1])
+            }
+        } else if r.Name().IsBranch() {
+            local = append(local, string(r.Name().Short()))
+        }
+        return nil
+    })
+
+    if showAllBranches {
+        fmt.Printf("Remote: %v\n", remote)
+        fmt.Printf("Local: %v\n", local)
+    }
+    fmt.Println()
 }
