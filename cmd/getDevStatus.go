@@ -21,10 +21,14 @@ This command use the cli config file ${HOME}/.cli-config.yaml
 }
 
 var statusVerbose bool
+var showAllBranches bool
+var showBranch bool
 
 func init() {
 	getCmd.AddCommand(getDevStatusCmd)
 	getDevStatusCmd.Flags().BoolVarP(&statusVerbose, "verbose", "v", false, "[Global] Show details about repository status")
+	getDevStatusCmd.Flags().BoolVarP(&showBranch, "show-branch", "b", false, "[Global] Show actual branch")
+	getDevStatusCmd.Flags().BoolVarP(&showAllBranches, "show-all-branches", "", false, "[Global] Show local and remote branches")
 
 	// Here you will define your flags and configuration settings.
 
